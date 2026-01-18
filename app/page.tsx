@@ -1,8 +1,9 @@
-import React from "react";
-export default function Home() {
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center flex-col bg-zinc-50 font-sans dark:bg-black">
-      <h1 className="text-8xl text-red-400">Wordcraft</h1>
+    <div className="flex min-h-screen items-center justify-center flex-col font-sans dark:bg-black">
+      <h1 className="text-4xl font-bold text-warning-500">
+        Tailwind Test
+      </h1>
     </div>
   );
 }
