@@ -5,10 +5,12 @@ export default function Controls({
   tone,
   setTone,
   onRewrite,
+  isLoading,
 }: {
   tone: string;
   setTone: (value: string) => void;
   onRewrite: () => void;
+  isLoading: boolean;
 }) {
   return (
     <div className="flex flex-wrap items-center gap-4">
@@ -24,8 +26,8 @@ export default function Controls({
         ]}
       />
 
-      <Button variant="primary" onClick={onRewrite}>
-        Rewrite
+      <Button variant="primary" onClick={onRewrite} disabled={isLoading}>
+        {isLoading ? "Rewriting..." : "Rewrite"}
       </Button>
     </div>
   );

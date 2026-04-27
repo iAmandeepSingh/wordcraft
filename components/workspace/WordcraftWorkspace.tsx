@@ -10,25 +10,32 @@ import Alert from "@/components/ui/Alert";
 export default function WordcraftWorkspace() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [tone, setTone] = useState("professional");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleGenerate = async (mode: string) => {
+  const handleGenerate = async () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
     setOutput("");
 
     try {
-      // TODO: Replace with real API call
-      await new Promise((res) => setTimeout(res, 1000));
+      const response = await fetch("/api/rewrite", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: input, tone }),
+      });
 
-      setOutput(
-        `✨ AI Generated (${mode})\n\n` +
-          input
-            .split(" ")
-            .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-            .join(" ")
-      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to rewrite text");
+      }
+
+      setOutput(data.text);
+    } catch (error: any) {
+      console.error(error);
+      setOutput("Error: " + error.message);
     } finally {
       setIsLoading(false);
     }
@@ -49,7 +56,9 @@ export default function WordcraftWorkspace() {
           <InputEditor value={input} onChange={setInput} />
 
           <Controls
-            onGenerate={handleGenerate}
+            tone={tone}
+            setTone={setTone}
+            onRewrite={handleGenerate}
             isLoading={isLoading}
           />
         </div>
