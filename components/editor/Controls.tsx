@@ -20,6 +20,7 @@ export default function Controls({
         onChange={setTone}
         options={[
           { label: "Professional", value: "professional" },
+          { label: "Balanced", value: "balanced" },
           { label: "Casual", value: "casual" },
           { label: "Friendly", value: "friendly" },
           { label: "Persuasive", value: "persuasive" },

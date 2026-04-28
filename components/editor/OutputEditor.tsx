@@ -21,7 +21,7 @@ export default function OutputEditor({ value, isLoading }: Props) {
       {value && !isLoading && (
         <button
           onClick={handleCopy}
-          className="absolute right-2 top-2 rounded-md bg-white p-1.5 text-gray-500 shadow-sm border border-gray-200 hover:text-blue-600 transition-colors"
+          className="absolute right-2.5 top-2.5 rounded-md bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm p-1.5 text-gray-500 shadow-sm border border-gray-100 dark:border-zinc-700 hover:text-blue-600 transition-all"
           title="Copy to clipboard"
         >
           {copied ? (

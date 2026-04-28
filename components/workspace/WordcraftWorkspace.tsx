@@ -44,7 +44,7 @@ export default function WordcraftWorkspace() {
   return (
     <main className="mx-auto max-w-7xl px-4 py-8">
       <Alert
-        // type="info"
+        type="info"
         message="Craft better words with AI — paste your text and choose a mode."
       />
 
