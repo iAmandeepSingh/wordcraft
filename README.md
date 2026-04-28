@@ -59,7 +59,7 @@ Wordcraft is built with a modern tech stack to ensure performance and a seamless
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) to start crafting!
+5. Open [http://wordcraft-mqfz.vercel.app](http://wordcraft-mqfz.vercel.app) to start crafting!
 
 ---
 
