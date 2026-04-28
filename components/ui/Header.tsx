@@ -14,7 +14,7 @@ export default function Header() {
         </div>
 
         {/* Center: Tagline */}
-        <p className="hidden text-sm text-gray-500 md:block">
+        <p className="hidden text-sm text-gray-700 md:block">
           Craft better words with AI
         </p>
 
