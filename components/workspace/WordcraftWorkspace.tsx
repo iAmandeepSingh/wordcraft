@@ -10,7 +10,13 @@ import Alert from "@/components/ui/Alert";
 export default function WordcraftWorkspace() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [tone, setTone] = useState("professional");
+  const [toneMix, setToneMix] = useState<Record<string, number>>({
+    professional: 100,
+    balanced: 0,
+    casual: 0,
+    friendly: 0,
+    persuasive: 0,
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGenerate = async () => {
@@ -23,7 +29,7 @@ export default function WordcraftWorkspace() {
       const response = await fetch("/api/rewrite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: input, tone }),
+        body: JSON.stringify({ text: input, tone: toneMix }),
       });
 
       const data = await response.json();
@@ -56,8 +62,8 @@ export default function WordcraftWorkspace() {
           <InputEditor value={input} onChange={setInput} />
 
           <Controls
-            tone={tone}
-            setTone={setTone}
+            toneMix={toneMix}
+            setToneMix={setToneMix}
             onRewrite={handleGenerate}
             isLoading={isLoading}
           />

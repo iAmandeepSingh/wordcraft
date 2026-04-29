@@ -5,6 +5,7 @@ type ButtonProps = {
   onClick?: () => void;
   disabled?: boolean;
   variant?: "primary" | "secondary";
+  className?: string;
 };
 
 export default function Button({
@@ -12,6 +13,7 @@ export default function Button({
   onClick,
   disabled,
   variant = "primary",
+  className,
 }: ButtonProps) {
   return (
     <button
@@ -23,7 +25,8 @@ export default function Button({
         variant === "primary" &&
           "bg-blue-600 text-white hover:bg-blue-700",
         variant === "secondary" &&
-          "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          "bg-gray-100 text-gray-700 hover:bg-gray-200",
+        className
       )}
     >
       {children}
