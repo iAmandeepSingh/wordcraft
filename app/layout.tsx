@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   description: "Wordcraft is your premium AI writing assistant. Effortlessly transform your text into professional, casual, or friendly tones with a single click.",
 };
 
+import Background from "@/components/ui/Background";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,11 +30,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={inter.className}
+        className={`${inter.className} selection:bg-blue-100 dark:selection:bg-blue-900/30`}
       >
-        <Header />
-        {children}
+        <Background />
+        <div className="relative z-0">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );

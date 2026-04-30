@@ -17,11 +17,11 @@ export default function OutputEditor({ value, isLoading }: Props) {
   };
 
   return (
-    <div className="relative min-h-[220px] w-full rounded-lg border border-gray-200 bg-gray-50 p-3 text-sm">
+    <div className="relative min-h-[220px] w-full rounded-2xl border border-slate-200 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md p-6 text-base dark:border-slate-800 shadow-sm transition-all overflow-hidden group">
       {value && !isLoading && (
         <button
           onClick={handleCopy}
-          className="absolute right-2.5 top-2.5 rounded-md bg-white/90 dark:bg-zinc-800/90 backdrop-blur-sm p-1.5 text-gray-500 shadow-sm border border-gray-100 dark:border-zinc-700 hover:text-blue-600 transition-all"
+          className="absolute right-4 top-4 rounded-xl bg-white dark:bg-slate-800 p-2 text-slate-500 shadow-sm border border-slate-200 dark:border-slate-700 hover:text-blue-600 hover:scale-105 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
           title="Copy to clipboard"
         >
           {copied ? (
@@ -35,8 +35,8 @@ export default function OutputEditor({ value, isLoading }: Props) {
       {isLoading && <Loader />}
 
       {!isLoading && (
-        <pre className="whitespace-pre-wrap text-gray-800 pr-8">
-          {value || "AI output will appear here..."}
+        <pre className="whitespace-pre-wrap text-slate-900 dark:text-slate-100 font-sans pr-10">
+          {value || <span className="text-slate-400 font-sans italic text-sm">AI output will appear here...</span>}
         </pre>
       )}
     </div>

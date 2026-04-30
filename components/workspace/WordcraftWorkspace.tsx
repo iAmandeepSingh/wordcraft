@@ -54,10 +54,13 @@ export default function WordcraftWorkspace() {
         message="Craft better words with AI — paste your text and choose a mode."
       />
 
-      <section className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <section className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 animate-in fade-in slide-in-from-bottom-4 duration-1000">
         {/* Input */}
-        <div className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold">Your Input</h2>
+        <div className="flex flex-col gap-5">
+          <div className="flex items-center gap-3">
+            <div className="h-1 w-8 bg-blue-600 rounded-full" />
+            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Your Input</h2>
+          </div>
 
           <InputEditor value={input} onChange={setInput} />
 
@@ -70,8 +73,11 @@ export default function WordcraftWorkspace() {
         </div>
 
         {/* Output */}
-        <div className="flex flex-col gap-4">
-          <h2 className="text-lg font-semibold">AI Output</h2>
+        <div className="flex flex-col gap-5">
+          <div className="flex items-center gap-3">
+            <div className="h-1 w-8 bg-purple-600 rounded-full" />
+            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">AI Output</h2>
+          </div>
 
           <OutputEditor
             value={output}
