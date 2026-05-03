@@ -18,6 +18,7 @@ export default function WordcraftWorkspace() {
     persuasive: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [activeMode, setActiveMode] = useState<"rewrite" | "summarize" | "expand">("rewrite");
 
   const handleGenerate = async () => {
     if (!input.trim()) return;
@@ -29,13 +30,17 @@ export default function WordcraftWorkspace() {
       const response = await fetch("/api/rewrite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: input, tone: toneMix }),
+        body: JSON.stringify({ 
+          text: input, 
+          tone: activeMode === "rewrite" ? toneMix : undefined,
+          mode: activeMode 
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to rewrite text");
+        throw new Error(data.error || "Failed to process text");
       }
 
       setOutput(data.text);
@@ -65,9 +70,11 @@ export default function WordcraftWorkspace() {
           <InputEditor value={input} onChange={setInput} />
 
           <Controls
+            activeMode={activeMode}
+            setActiveMode={setActiveMode}
             toneMix={toneMix}
             setToneMix={setToneMix}
-            onRewrite={handleGenerate}
+            onGenerate={handleGenerate}
             isLoading={isLoading}
           />
         </div>
